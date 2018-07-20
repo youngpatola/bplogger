@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewAddLogActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.youngpatola.bplogger.addlog.AddLogActivity">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/label_sys"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="@+id/npSys"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/label_dia"
+        app:layout_constraintEnd_toStartOf="@+id/npRate"
+        app:layout_constraintStart_toStartOf="@+id/npDia"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/label_rate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/npRate"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/dpDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="@string/label_date"
+        android:inputType="date"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/npDia" />
+
+    <EditText
+        android:id="@+id/etTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="@string/label_time"
+        android:inputType="time"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dpDate"
+        app:layout_constraintTop_toBottomOf="@+id/npRate" />
+
+    <EditText
+        android:id="@+id/etNotes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:hint="@string/label_notes"
+        android:inputType="textMultiLine"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dpDate" />
+
+    <Button
+        android:id="@+id/bSave"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/label_button_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/npSys"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:clickable="true"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="number"
+        android:text="@string/dummy_sys"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/npDia"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/npDia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="number"
+        android:text="@string/dummy_dia"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/npRate"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/npSys"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/npRate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="number"
+        android:text="@string/dummy_rate"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/npDia"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNotes" />
+
+</android.support.constraint.ConstraintLayout>

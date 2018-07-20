@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Settings">
+
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/list_pref_themes"
+        android:entryValues="@array/list_pref_themes_values"
+        android:key="pref_themes"
+        android:summary="Select theme for the app  "
+        android:title="Themes" />
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/list_pref_fontsize"
+        android:entryValues="@array/list_pref_fontsize_values"
+        android:key="pref_fonts"
+        android:summary="Select a font size that's easy for the eyes"
+        android:title="Font Size" />
+    <EditTextPreference
+        android:id="@+id/prefButtonExport"
+        android:defaultValue="Default value"
+        android:dialogTitle="Enter name of file  "
+        android:key="pref_export_db"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:summary="Exports database as a CSV file"
+        android:title="Export database " />
+</PreferenceScreen>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".base.BaseActivity">
+
+    <item
+        android:id="@+id/action_add"
+        android:icon="@drawable/ic_add_white_24dp"
+        android:title="@string/action_add"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/action_save"
+        android:icon="@drawable/ic_save_black_24dp"
+        android:title="@string/action_save"
+        android:visible="false"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/action_edit"
+        android:icon="@drawable/ic_edit_black_24dp"
+        android:title="@string/action_edit"
+        android:visible="false"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_about"
+        android:title="@string/action_about"
+        app:showAsAction="never" />
+</menu>

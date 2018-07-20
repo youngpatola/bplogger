@@ -1,0 +1,81 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:actionButtonStyle">@style/ActionButton</item>
+    </style>
+
+    <!--Gray Theme-->
+    <style name="AppTheme.Gray" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/grayColorPrimary</item>
+        <item name="colorPrimaryDark">@color/grayColorPrimaryDark</item>
+        <item name="colorAccent">@color/grayColorAccent</item>
+        <item name="android:colorBackground">@color/grayColorBackground</item>
+        <item name="android:textColorTertiary">@color/darkTextColorPrimary</item>
+        <item name="android:textColorSecondary">@color/darkTextColorSecondary</item>
+        <item name="android:actionButtonStyle">@style/ActionButton</item>
+        <item name="android:listDivider">@drawable/divider</item>
+        <item name="android:textColorHint">@color/divider</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+        <item name="android:alertDialogTheme">@style/AppTheme.Black.DarkThemeDialog</item>
+        <item name="android:popupMenuStyle">@style/AppTheme.Gray.ActionPopup</item>
+    </style>
+
+    <!--Black Theme-->
+    <style name="AppTheme.Black" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/darkColorPrimary</item>
+        <item name="colorPrimaryDark">@color/darkColorPrimaryDark</item>
+        <item name="colorAccent">@color/darkColorAccent</item>
+        <item name="android:colorBackground">@color/darkColorBackground</item>
+        <item name="android:textColorTertiary">@color/darkTextColorPrimary</item>
+        <item name="android:textColorSecondary">@color/darkTextColorSecondary</item>
+        <item name="android:actionButtonStyle">@style/ActionButton</item>
+        <item name="android:listDivider">@drawable/divider</item>
+        <item name="android:textColorHint">@color/darkTextColorSecondary</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+        <item name="android:alertDialogTheme">@style/AppTheme.Gray.DarkThemeDialog</item>
+        <item name="android:popupMenuStyle">@style/AppTheme.Black.ActionPopup</item>
+    </style>
+
+    <!--Alert Dialog Gray Theme-->
+    <style name="AppTheme.Gray.DarkThemeDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+        <item name="android:background">@color/grayColorBackground</item>
+        <item name="android:listPreferredItemPaddingLeft">0dp</item>
+    </style>
+
+    <!--Alert Dialog Black Theme-->
+    <style name="AppTheme.Black.DarkThemeDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+        <item name="android:background">@color/darkColorBackground</item>
+        <item name="android:listPreferredItemPaddingLeft">0dp</item>
+    </style>
+
+    <!--Options Menu Popup Gray Theme-->
+    <style name="AppTheme.Gray.ActionPopup" parent="@android:style/Widget.PopupWindow">
+        <item name="android:popupBackground">@color/grayColorBackground</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <!--Options Menu Popup Black Theme-->
+    <style name="AppTheme.Black.ActionPopup" parent="@android:style/Widget.PopupWindow">
+        <item name="android:popupBackground">@color/darkColorBackground</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <!--End theme-->
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/divider</item>
+    </style>
+
+    <style name="ActionButton" parent="@android:style/Widget.ActionButton">
+        <item name="android:drawablePadding">4dp</item>
+    </style>
+
+</resources>

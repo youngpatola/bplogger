@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/constraintLayoutItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="4dp"
+    android:layout_marginTop="4dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:maxWidth="600dp"
+    android:minWidth="350dp"
+    android:weightSum="4">
+
+    <LinearLayout
+        android:id="@+id/viewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/textViewMonth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/dummy_month"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="14sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/textViewDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/dummy_day"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="fill_vertical|center_horizontal"
+            android:text="Today"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewSystolic"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="2"
+        android:background="@drawable/border_left"
+        android:gravity="center_vertical"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="@string/dummy_sys"
+        android:textAlignment="textEnd"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:text="/"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textViewDiastolic"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="@string/dummy_dia"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textViewHeartRate"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:paddingBottom="5dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:text="@string/dummy_rate"
+        android:textSize="30sp" />
+
+</LinearLayout>
