@@ -2,8 +2,14 @@ package com.youngpatola.bplogger.base;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar;
+import com.youngpatola.bplogger.utils.ThemeUtil;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Build;
+import android.os.Bundle;
 import android.view.View;
 
 /**
@@ -27,12 +33,7 @@ public class BaseActivity extends AppCompatActivity{
         new AlertDialog.Builder(this)
             .setTitle(title)
             .setMessage(message)
-            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                }
-            }).show();
+            .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> dialogInterface.dismiss()).show();
     }
 
     public void showDialog(String title, String message, DialogInterface.OnClickListener yesListener, DialogInterface.OnClickListener noListener) {

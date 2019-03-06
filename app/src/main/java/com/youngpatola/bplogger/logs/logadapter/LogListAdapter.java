@@ -1,7 +1,7 @@
 package com.youngpatola.bplogger.logs.logadapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +51,7 @@ public class LogListAdapter extends RecyclerView.Adapter<LogListAdapter.LogListV
         if (bpLog.getDatetime()!=0) {
             String epochToDTUTC = new DateTime(bpLog.getDatetime()*1000, DateTimeZone.UTC).toString();
             DateTime dateTime = new DateTime(epochToDTUTC);
-            holder.tvDateTime.setText(dateTime.toString("MMMM d, yyyy hh:mm a"));
+            holder.tvDateTime.setText(dateTime.toString("MMMM d, hh:mm a"));
             // TODO: [low-prio] Create a time util?
         }
     }

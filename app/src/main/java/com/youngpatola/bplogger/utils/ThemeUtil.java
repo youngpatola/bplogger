@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.youngpatola.bplogger.R;
 
@@ -33,6 +34,7 @@ public class ThemeUtil {
     }
 
     public static void setupTheme(Activity activity) {
+        Log.d("Add", "setupTheme: " + selectedTheme);
         switch (selectedTheme) {
             case LIGHT_THEME : activity.setTheme(R.style.AppTheme); break;
             case GRAY_THEME : activity.setTheme(R.style.AppTheme_Gray); break;

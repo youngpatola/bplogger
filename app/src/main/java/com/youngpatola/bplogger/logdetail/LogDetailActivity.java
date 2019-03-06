@@ -52,7 +52,7 @@ public class LogDetailActivity extends BaseActivity implements LogDetailContract
         ThemeUtil.setupTheme(this);
 
         setContentView(R.layout.activity_log_detail);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Bindings
         ButterKnife.bind(this);
@@ -122,7 +122,6 @@ public class LogDetailActivity extends BaseActivity implements LogDetailContract
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.findItem(R.id.action_edit).setVisible(true);
         menu.findItem(R.id.action_save).setVisible(false);
-        menu.findItem(R.id.action_add).setVisible(false);
         menu.findItem(R.id.action_settings).setVisible(false);
         menu.findItem(R.id.action_about).setVisible(false);
 

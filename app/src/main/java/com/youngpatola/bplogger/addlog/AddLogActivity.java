@@ -51,6 +51,10 @@ public class AddLogActivity extends BaseActivity implements AddLogContract.View 
     @BindView(R.id.etPosition) EditText editTextPosition;
     @BindView(R.id.etArm) EditText editTextArm;
     @BindView(R.id.etNotes) EditText editTextNotes;
+    @OnClick(R.id.btn_saveLog)
+    public void onSaveButtonClicked() {
+        buttonSave();
+    }
 
     AddLogPresenter mPresenter;
     int year, day, month, hour, min;
@@ -63,20 +67,21 @@ public class AddLogActivity extends BaseActivity implements AddLogContract.View 
         // Theme setup
         ThemeUtil.assignTheme(ThemeUtil.getCurrentTheme(this));
         ThemeUtil.setupTheme(this);
+        Log.d(TAG, "onCreate: " + ThemeUtil.getCurrentTheme(this));
 
         setContentView(R.layout.alt_add_log);
         ButterKnife.bind(this);
         setPresenter(new AddLogPresenter(this, this));
 
         // Add launchMode:"singleTop" on the parent activity to fire its onResume.
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle!=null) {
-            getSupportActionBar().setTitle(R.string.actionbar_title_edit);
+//            getSupportActionBar().setTitle(R.string.actionbar_title_edit);
             setupEditLog(mPresenter.getLog(bundle.getInt("logKey")));
         } else {
-            getSupportActionBar().setTitle(R.string.actionbar_title_add);
+//            getSupportActionBar().setTitle(R.string.actionbar_title_add);
             setupAddLog();
         }
     }
@@ -273,7 +278,6 @@ public class AddLogActivity extends BaseActivity implements AddLogContract.View 
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.findItem(R.id.action_edit).setVisible(false);
         menu.findItem(R.id.action_save).setVisible(true);
-        menu.findItem(R.id.action_add).setVisible(false);
         menu.findItem(R.id.action_settings).setVisible(false);
         menu.findItem(R.id.action_about).setVisible(false);
 

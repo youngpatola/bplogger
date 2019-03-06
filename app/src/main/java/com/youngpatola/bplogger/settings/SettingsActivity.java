@@ -5,12 +5,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.youngpatola.bplogger.R;
@@ -41,7 +39,7 @@ public class SettingsActivity extends BaseActivity implements SettingsContract.V
         ThemeUtil.setupTheme(this);
 
         setContentView(R.layout.activity_settings);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ButterKnife.bind(this);
         ButterKnife.bind(exportButton, layoutExport);

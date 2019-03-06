@@ -1,17 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:actionButtonStyle">@style/ActionButton</item>
     </style>
 
     <!--Gray Theme-->
-    <style name="AppTheme.Gray" parent="Theme.AppCompat">
+    <style name="AppTheme.Gray" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/grayColorPrimary</item>
-        <item name="colorPrimaryDark">@color/grayColorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/grayColorBackground</item>
         <item name="colorAccent">@color/grayColorAccent</item>
         <item name="android:colorBackground">@color/grayColorBackground</item>
         <item name="android:textColorTertiary">@color/darkTextColorPrimary</item>
@@ -25,9 +24,9 @@
     </style>
 
     <!--Black Theme-->
-    <style name="AppTheme.Black" parent="Theme.AppCompat">
+    <style name="AppTheme.Black" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/darkColorPrimary</item>
-        <item name="colorPrimaryDark">@color/darkColorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/darkColorBackground</item>
         <item name="colorAccent">@color/darkColorAccent</item>
         <item name="android:colorBackground">@color/darkColorBackground</item>
         <item name="android:textColorTertiary">@color/darkTextColorPrimary</item>

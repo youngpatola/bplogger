@@ -1,19 +1,30 @@
 package com.youngpatola.bplogger.logs;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.os.Environment;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.youngpatola.bplogger.R;
 import com.youngpatola.bplogger.addlog.AddLogActivity;
 import com.youngpatola.bplogger.base.BaseActivity;
@@ -24,11 +35,13 @@ import com.youngpatola.bplogger.logs.logadapter.LogListAdapter;
 import com.youngpatola.bplogger.settings.SettingsActivity;
 import com.youngpatola.bplogger.utils.ThemeUtil;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class LogsActivity extends BaseActivity implements LogsContract.View{
     private static final String TAG = LogsActivity.class.getSimpleName();
@@ -39,6 +52,11 @@ public class LogsActivity extends BaseActivity implements LogsContract.View{
     // Bindings
     @BindView(R.id.rvLogList) RecyclerView rvLogList;
     @BindView(R.id.viewLogsActivity) View viewLogsActivity;
+    @BindView(R.id.bottomAppBar) BottomAppBar appBar;
+    @OnClick(R.id.btn_addLog)
+    public void onAddButtonClicked() {
+        mPresenter.addNewLog();
+    }
 
     private LogsPresenter mPresenter;
 
@@ -56,20 +74,12 @@ public class LogsActivity extends BaseActivity implements LogsContract.View{
             AlertDialog.Builder b = new AlertDialog.Builder(LogsActivity.this);
             b.setTitle(R.string.prompt_title_options)
                 .setMessage(R.string.prompt_message_options)
-                .setPositiveButton(R.string.prompt_choice_edit, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent(LogsActivity.this, AddLogActivity.class);
-                        intent.putExtra("logKey", bpLog.getId());
-                        startActivityForResult(intent, REQUEST_EDIT_LOG);
-                    }
+                .setPositiveButton(R.string.prompt_choice_edit, (dialogInterface, i) -> {
+                    Intent intent = new Intent(LogsActivity.this, AddLogActivity.class);
+                    intent.putExtra("logKey", bpLog.getId());
+                    startActivityForResult(intent, REQUEST_EDIT_LOG);
                 })
-                .setNegativeButton(R.string.prompt_choice_delete, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        mPresenter.deleteLog(bpLog);
-                    }
-                })
+                .setNegativeButton(R.string.prompt_choice_delete, (dialogInterface, i) -> mPresenter.deleteLog(bpLog))
                 .setNeutralButton(android.R.string.cancel, null)
                 .setCancelable(true)
                 .show();
@@ -89,15 +99,28 @@ public class LogsActivity extends BaseActivity implements LogsContract.View{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alt_activity_entry_list);
         ButterKnife.bind(this);
+        setupAppBar();
 
         setPresenter(new LogsPresenter(this, this));
 
-        mAdapter = new LogListAdapter(new ArrayList<BPLog>(0), mItemListener);
+        mAdapter = new LogListAdapter(new ArrayList<>(0), mItemListener);
         rvLogList.setAdapter(mAdapter);
-        rvLogList.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         rvLogList.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rvLogList.setLayoutManager(layoutManager);
+
+
+        // Bluestacks emulator detector
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            permissionCheck();
+        } else {
+            Log.d(TAG, "Files: Well");
+            isEmulator();
+        }
+    }
+
+    private void setupAppBar() {
+        setSupportActionBar(appBar);
     }
 
     @Override
@@ -152,7 +175,6 @@ public class LogsActivity extends BaseActivity implements LogsContract.View{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_add : mPresenter.addNewLog(); return true;
             case R.id.action_settings : {
                 Intent intent = new Intent(this, SettingsActivity.class);
                 startActivityForResult(intent, SETTINGS);
@@ -163,5 +185,39 @@ public class LogsActivity extends BaseActivity implements LogsContract.View{
             default: return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        isEmulator();
+    }
+
+    private void isEmulator() {
+        String path = Environment.getExternalStorageDirectory().toString();
+        Log.d("Files", "Path: " + path);
+        File directory = new File(path);
+        File[] files = directory.listFiles();
+        Log.d("Files", "Size: "+ files.length);
+        for (int i = 0; i < files.length; i++) {
+            if (files[i].getName().contains("windows")) {
+                Toast.makeText(this, "Windows file exists", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Files: windows file exists but is " + files[i].exists());
+            }
+            if (i==files.length) {
+                Toast.makeText(this, "No windows file", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void permissionCheck() {
+        if(ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
+            //ask for permission
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+        } else {
+            isEmulator();
+        }
+    }
+
     // end region
 }
